@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2026 at 05:18 PM
+-- Generation Time: Jun 23, 2026 at 04:36 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_salesorder`
+-- Database: `salesorder`
 --
 
 -- --------------------------------------------------------
@@ -41,14 +41,9 @@ CREATE TABLE `detail_order` (
 --
 
 INSERT INTO `detail_order` (`id`, `id_order`, `id_produk`, `jumlah`, `harga_satuan`, `subtotal`) VALUES
-(1, 1, 1, 2, '4500000.00', '9000000.00'),
-(2, 1, 7, 3, '850000.00', '2550000.00'),
-(3, 1, 8, 1, '1200000.00', '1200000.00'),
-(4, 2, 4, 2, '4200000.00', '8400000.00'),
-(5, 3, 5, 1, '7500000.00', '7500000.00'),
-(6, 4, 3, 1, '2800000.00', '2800000.00'),
-(7, 4, 6, 1, '2300000.00', '2300000.00'),
-(8, 5, 6, 1, '2300000.00', '2300000.00');
+(9, 6, 9, 4, '7500000.00', '30000000.00'),
+(10, 6, 11, 1, '5000000.00', '5000000.00'),
+(11, 7, 10, 1, '8499000.00', '8499000.00');
 
 -- --------------------------------------------------------
 
@@ -69,11 +64,9 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id`, `nama`, `alamat`, `no_telepon`, `created_at`) VALUES
-(1, 'Toko Elektronik Maju', 'Jl. Pahlawan No. 12, Jakarta', '081234567890', '2026-05-30 14:43:36'),
-(2, 'CV Berkah Jaya', 'Jl. Sudirman No. 45, Bandung', '082345678901', '2026-05-30 14:43:36'),
-(3, 'UD Sumber Rezeki', 'Jl. Gatot Subroto No. 7, Surabaya', '083456789012', '2026-05-30 14:43:36'),
-(4, 'PT Cahaya Elektronik', 'Jl. Diponegoro No. 33, Semarang', '084567890123', '2026-05-30 14:43:36'),
-(5, 'Toko Murah Meriah', 'Jl. Ahmad Yani No. 88, Yogyakarta', '085678901234', '2026-05-30 14:43:36');
+(6, 'Nanon Korapat', 'Thailand', '083878123', '2026-06-23 02:22:06'),
+(7, 'Tay Tawan', 'Bayur', '0897969594', '2026-06-23 02:22:24'),
+(8, 'Xiao Zhan', 'China', '089922334455', '2026-06-23 02:23:11');
 
 -- --------------------------------------------------------
 
@@ -95,14 +88,9 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `kode_produk`, `nama_produk`, `harga`, `stok`, `created_at`) VALUES
-(1, 'PRD-001', 'TV LED Samsung 43 inch', '4500000.00', 20, '2026-05-30 14:43:17'),
-(2, 'PRD-002', 'Kulkas Sharp 2 Pintu', '3200000.00', 15, '2026-05-30 14:43:17'),
-(3, 'PRD-003', 'Mesin Cuci LG 8kg', '2800000.00', 10, '2026-05-30 14:43:17'),
-(4, 'PRD-004', 'AC Daikin 1 PK', '4200000.00', 12, '2026-05-30 14:43:17'),
-(5, 'PRD-005', 'Laptop ASUS VivoBook 14', '7500000.00', 8, '2026-05-30 14:43:17'),
-(6, 'PRD-006', 'HP Xiaomi Redmi Note 13', '2300000.00', 25, '2026-05-30 14:43:17'),
-(7, 'PRD-007', 'Speaker Bluetooth JBL', '850000.00', 30, '2026-05-30 14:43:17'),
-(8, 'PRD-008', 'Kamera CCTV Hikvision', '1200000.00', 18, '2026-05-30 14:43:17');
+(9, 'P-001', 'IPHONE 12 ', '7500000.00', 11, '2026-06-23 02:11:02'),
+(10, 'P-002', 'IPHONE 13', '8499000.00', 19, '2026-06-23 02:11:32'),
+(11, 'P-003', 'IPAD 3', '5000000.00', 2, '2026-06-23 02:12:00');
 
 -- --------------------------------------------------------
 
@@ -126,11 +114,8 @@ CREATE TABLE `sales_order` (
 --
 
 INSERT INTO `sales_order` (`id`, `no_order`, `id_sales`, `id_pelanggan`, `tanggal`, `total_harga`, `status`, `created_at`) VALUES
-(1, 'SO-20260501-001', 2, 1, '2026-05-01', '13500000.00', 'selesai', '2026-05-30 14:44:11'),
-(2, 'SO-20260510-002', 2, 2, '2026-05-10', '8400000.00', 'dikirim', '2026-05-30 14:44:11'),
-(3, 'SO-20260515-003', 3, 3, '2026-05-15', '7500000.00', 'selesai', '2026-05-30 14:44:11'),
-(4, 'SO-20260520-004', 3, 4, '2026-05-20', '4600000.00', 'draft', '2026-05-30 14:44:11'),
-(5, 'SO-20260525-005', 2, 5, '2026-05-25', '2300000.00', 'dibatalkan', '2026-05-30 14:44:11');
+(6, 'SO-20260623-307', 14, 6, '2026-06-23', '35000000.00', 'selesai', '2026-06-23 02:24:08'),
+(7, 'SO-20260623-607', 14, 8, '2026-06-23', '8499000.00', 'draft', '2026-06-23 02:24:29');
 
 -- --------------------------------------------------------
 
@@ -152,10 +137,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `username`, `password`, `role`, `created_at`) VALUES
-(1, 'Administrator', 'admin', '0192023a7bbd73250516f069df18b500', 'admin', '2026-05-30 13:23:06'),
-(2, 'Budi Santoso', 'budi', '3f59a0fcfb5bd8f8a6b595a42f1b4b05', 'sales', '2026-05-30 13:23:06'),
-(3, 'Sari Dewi', 'sari', '3f59a0fcfb5bd8f8a6b595a42f1b4b05', 'sales', '2026-05-30 13:23:06'),
-(4, 'Rina Marlina', 'manager', '6ca526e78d48869d95b5b00b7bfa3f5b', 'manager', '2026-05-30 13:23:06');
+(9, 'Administrator', 'admin', '0192023a7bbd73250516f069df18b500', 'admin', '2026-06-23 01:41:06'),
+(14, 'Chimon Wachirawit Ruangwiwat', 'chimon', 'fe7e3bda7d27679154e7544374759c9b', 'sales', '2026-06-23 02:16:29'),
+(15, 'Na Jaemin', 'jaemin', '50246fc44a1f399bd8b1598d835427f2', 'sales', '2026-06-23 02:16:29'),
+(16, 'Lee Jeno', 'jeno', '658c5298bd772d21476086d0cc9fae94', 'manager', '2026-06-23 02:16:53');
 
 --
 -- Indexes for dumped tables
@@ -206,31 +191,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `detail_order`
 --
 ALTER TABLE `detail_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sales_order`
 --
 ALTER TABLE `sales_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
