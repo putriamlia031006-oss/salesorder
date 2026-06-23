@@ -1,24 +1,38 @@
+
 <?php $this->load->view('templates/header'); ?>
 
 <style>
 :root{
-    --green:#3dbb85;
-    --green-dark:#2a9e6e;
-    --green-light:#e8f8f2;
+    --cream:#f8f4ee;
+    --cream-dark:#eadbc8;
+    --cream-light:#fffaf5;
 
-    --pink:#e97fa8;
-    --pink-dark:#d4608e;
-    --pink-light:#fce8f1;
+    --brown:#8d6e63;
+    --brown-dark:#6d4c41;
+
+    --gold:#c8a27c;
+    --gold-dark:#b78b60;
 }
 
+body{
+    background:var(--cream);
+}
+
+/* HEADER */
 .page-header{
-    background:linear-gradient(135deg,var(--green),var(--green-dark),var(--pink));
-    color:white;
+    background:linear-gradient(
+        135deg,
+        #f5e6d3,
+        #eadbc8,
+        #d9c1a5
+    );
+    color:var(--brown-dark);
     border-radius:18px;
     padding:24px 30px;
     margin-bottom:25px;
     position:relative;
     overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
 }
 
 .page-header::before{
@@ -27,7 +41,7 @@
     width:180px;
     height:180px;
     border-radius:50%;
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.25);
     top:-80px;
     right:-40px;
 }
@@ -38,21 +52,23 @@
     width:120px;
     height:120px;
     border-radius:50%;
-    background:rgba(255,255,255,.06);
+    background:rgba(255,255,255,.15);
     bottom:-50px;
     right:80px;
 }
 
+/* CARD */
 .form-card{
     border:none;
     border-radius:18px;
     overflow:hidden;
+    background:white;
     box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 .form-card .card-header{
-    background:#fff;
-    border-bottom:1px solid #eee;
+    background:#fffaf5;
+    border-bottom:1px solid #eee4d6;
     padding:18px 25px;
 }
 
@@ -60,83 +76,102 @@
     padding:25px;
 }
 
+/* LABEL */
 .form-label{
     font-weight:600;
-    color:#555;
+    color:var(--brown);
 }
 
+/* INPUT */
 .form-control{
-    border-radius:10px;
-    border:1px solid #ddd;
-    padding:10px 14px;
+    border-radius:12px;
+    border:1px solid #e3d6c8;
+    padding:12px 15px;
+    background:#fff;
 }
 
 .form-control:focus{
-    border-color:var(--green);
-    box-shadow:0 0 0 .2rem rgba(61,187,133,.15);
+    border-color:var(--gold);
+    box-shadow:0 0 0 .2rem rgba(200,162,124,.15);
 }
 
-.btn-green{
-    background:var(--green);
+/* BUTTON SIMPAN */
+.btn-cream{
+    background:var(--gold);
     border:none;
     color:white;
-    border-radius:10px;
-    padding:10px 18px;
+    border-radius:12px;
+    padding:10px 20px;
+    font-weight:600;
 }
 
-.btn-green:hover{
-    background:var(--green-dark);
+.btn-cream:hover{
+    background:var(--gold-dark);
     color:white;
 }
 
-.btn-pink{
-    background:var(--pink);
+/* BUTTON KEMBALI */
+.btn-brown{
+    background:var(--brown);
     border:none;
     color:white;
-    border-radius:10px;
-    padding:10px 18px;
+    border-radius:12px;
+    padding:10px 20px;
+    font-weight:600;
 }
 
-.btn-pink:hover{
-    background:var(--pink-dark);
+.btn-brown:hover{
+    background:var(--brown-dark);
     color:white;
 }
 
 .required{
     color:#dc3545;
 }
+
+.card-header h5{
+    color:var(--brown-dark);
+    font-weight:600;
+}
 </style>
 
 <div class="container-fluid">
 
-    <!-- HERO -->
+    <!-- HEADER -->
     <div class="page-header">
+
         <h3 class="mb-1 font-weight-bold">
             <?= $pelanggan ? 'Edit Pelanggan' : 'Tambah Pelanggan' ?>
         </h3>
 
-        <p class="mb-0" style="opacity:.9;">
-            Kelola data pelanggan konveksi dengan mudah dan cepat.
+        <p class="mb-0">
+            Kelola data pelanggan konveksi dengan tampilan yang elegan dan profesional.
         </p>
+
     </div>
 
-    <!-- FORM -->
+    <!-- CARD FORM -->
     <div class="card form-card">
 
         <div class="card-header">
+
             <h5 class="mb-0">
                 <i class="fas fa-user-circle mr-2"></i>
                 Form Data Pelanggan
             </h5>
+
         </div>
 
         <div class="card-body">
 
             <form action="<?= $pelanggan ? base_url('pelanggan/update/'.$pelanggan->id) : base_url('pelanggan/simpan') ?>" method="POST">
 
+                <!-- Nama -->
                 <div class="form-group mb-3">
+
                     <label class="form-label">
-                        Nama Pelanggan <span class="required">*</span>
+                        Nama Pelanggan
+                        <span class="required">*</span>
                     </label>
 
                     <input
@@ -146,9 +181,12 @@
                         value="<?= $pelanggan->nama ?? '' ?>"
                         placeholder="Masukkan nama pelanggan"
                         required>
+
                 </div>
 
+                <!-- Alamat -->
                 <div class="form-group mb-3">
+
                     <label class="form-label">
                         Alamat
                     </label>
@@ -158,9 +196,12 @@
                         class="form-control"
                         rows="4"
                         placeholder="Masukkan alamat pelanggan"><?= $pelanggan->alamat ?? '' ?></textarea>
+
                 </div>
 
+                <!-- Telepon -->
                 <div class="form-group mb-4">
+
                     <label class="form-label">
                         No. Telepon
                     </label>
@@ -171,14 +212,16 @@
                         class="form-control"
                         value="<?= $pelanggan->no_telepon ?? '' ?>"
                         placeholder="08xxxxxxxxxx">
+
                 </div>
 
-                <button type="submit" class="btn btn-green">
+                <!-- BUTTON -->
+                <button type="submit" class="btn btn-cream">
                     <i class="fas fa-save mr-1"></i>
                     Simpan
                 </button>
 
-                <a href="<?= base_url('pelanggan') ?>" class="btn btn-pink ml-2">
+                <a href="<?= base_url('pelanggan') ?>" class="btn btn-brown ml-2">
                     <i class="fas fa-arrow-left mr-1"></i>
                     Kembali
                 </a>
@@ -192,3 +235,4 @@
 </div>
 
 <?php $this->load->view('templates/footer'); ?>
+```

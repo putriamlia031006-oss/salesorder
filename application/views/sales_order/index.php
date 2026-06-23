@@ -341,7 +341,7 @@ body{
                         </div>
                     </td>
                     <td style="font-size:13px;">
-                        <i class="fas fa-building mr-1" style="color::#A8854F;"></i>
+                        <i class="fas fa-building mr-1" style="color:#A8854F;"></i>
                         <?= $o->nama_pelanggan ?>
                     </td>
                     <td>

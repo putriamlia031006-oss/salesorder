@@ -1,183 +1,512 @@
+```php
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Laporan Penjualan - PT Maju Jaya</title>
-    <style>
-        body { font-family: Arial, sans-serif; font-size: 12px; }
+<meta charset="UTF-8">
+<title>Laporan Penjualan - PT Maju Jaya</title>
 
-        .header { text-align: center; margin-bottom: 16px; }
-        .header h2 { margin: 0 0 4px; font-size: 16px; }
-        .header p  { margin: 2px 0; font-size: 12px; }
-        .divider   { border: none; border-top: 2px solid #000; margin: 10px 0 4px; }
-        .divider2  { border: none; border-top: 1px solid #000; margin: 4px 0 16px; }
+<style>
 
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 12px;
-        }
+:root{
+    --cream:#f8f4ee;
+    --cream-light:#fffaf5;
+    --cream-dark:#eadbc8;
 
-        /* stat boxes */
-        .stat-row { display: flex; gap: 12px; margin-bottom: 16px; }
-        .stat-box {
-            flex: 1; border: 1px solid #ccc;
-            border-radius: 6px; padding: 8px 12px;
-            text-align: center;
-        }
-        .stat-box .label { font-size: 10px; color: #555; text-transform: uppercase; margin-bottom: 4px; }
-        .stat-box .value { font-size: 14px; font-weight: 700; }
+    --brown:#8d6e63;
+    --brown-dark:#6d4c41;
 
-        /* table */
-        table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
-        th {
-            background: #2a9e6e;
-            color: #fff;
-            padding: 8px;
-            text-align: center;
-            font-size: 11px;
-            border: 1px solid #2a9e6e;
-        }
-        td {
-            padding: 7px 8px;
-            border: 1px solid #ccc;
-            text-align: center;
-            font-size: 11px;
-        }
-        tr:nth-child(even) { background: #f2fdf8; }
-        tfoot td {
-            background: #e8f8f2;
-            font-weight: 700;
-            border: 1px solid #aaa;
-        }
+    --gold:#c8a27c;
+    --gold-dark:#b78b60;
 
-        /* ttd */
-        .ttd-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            font-size: 12px;
-        }
-        .ttd-box { text-align: center; width: 160px; }
-        .ttd-box .ttd-line {
-            border-top: 1px solid #000;
-            margin-top: 50px;
-            padding-top: 4px;
-        }
+    --border:#ddd0c0;
+}
 
-        /* catatan */
-        .catatan { font-size: 10px; color: #555; margin-top: 8px; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        @media print {
-            .no-print { display: none !important; }
-            body { margin: 0; }
-        }
-    </style>
+body{
+    font-family:'Segoe UI',sans-serif;
+    font-size:12px;
+    color:#444;
+    background:var(--cream);
+    padding:25px;
+}
+
+/* ======================
+   BUTTONS
+====================== */
+
+.action-bar{
+    text-align:right;
+    margin-bottom:15px;
+}
+
+.btn{
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+}
+
+.btn-print{
+    background:var(--gold);
+}
+
+.btn-back{
+    background:var(--brown);
+    margin-left:8px;
+}
+
+/* ======================
+   HEADER
+====================== */
+
+.report-header{
+    background:linear-gradient(
+        135deg,
+        #fffaf5,
+        #f5e6d3
+    );
+
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.company-name{
+    font-size:24px;
+    font-weight:700;
+    color:var(--brown-dark);
+    letter-spacing:1px;
+}
+
+.company-desc{
+    color:#777;
+    margin-top:3px;
+}
+
+.divider{
+    border:none;
+    border-top:2px solid var(--gold);
+    margin:12px 0;
+}
+
+.report-title{
+    font-size:18px;
+    font-weight:700;
+    color:var(--brown-dark);
+}
+
+.period{
+    margin-top:6px;
+    color:#666;
+}
+
+/* ======================
+   INFO
+====================== */
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:18px;
+    color:#555;
+}
+
+/* ======================
+   SUMMARY
+====================== */
+
+.stat-row{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat-box{
+    flex:1;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+}
+
+.stat-label{
+    font-size:11px;
+    color:#888;
+    text-transform:uppercase;
+    margin-bottom:5px;
+}
+
+.stat-value{
+    font-size:18px;
+    font-weight:700;
+    color:var(--brown-dark);
+}
+
+/* ======================
+   TABLE
+====================== */
+
+.table-wrapper{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid var(--border);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead th{
+    background:#f5e6d3;
+    color:var(--brown-dark);
+    padding:12px;
+    font-size:11px;
+    text-align:center;
+    border-bottom:2px solid #dcc5a9;
+}
+
+tbody td{
+    padding:10px;
+    border-bottom:1px solid #eee;
+    text-align:center;
+}
+
+tbody tr:nth-child(even){
+    background:#fffaf5;
+}
+
+tbody tr:hover{
+    background:#f9f1e8;
+}
+
+tfoot td{
+    background:#eadbc8;
+    color:var(--brown-dark);
+    font-weight:700;
+    padding:12px;
+}
+
+.text-right{
+    text-align:right;
+}
+
+/* ======================
+   STATUS
+====================== */
+
+.status{
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+}
+
+.status-selesai{
+    background:#dff3e8;
+    color:#2f855a;
+}
+
+.status-dikirim{
+    background:#e7f0ff;
+    color:#2b6cb0;
+}
+
+.status-draft{
+    background:#f3f4f6;
+    color:#555;
+}
+
+.status-dibatalkan{
+    background:#fdeaea;
+    color:#c53030;
+}
+
+/* ======================
+   GRAND TOTAL
+====================== */
+
+.total-box{
+    margin-top:15px;
+    background:#f5e6d3;
+    border:1px solid #dcc5a9;
+    border-radius:10px;
+    padding:14px;
+    text-align:right;
+}
+
+.total-box h3{
+    color:var(--brown-dark);
+}
+
+/* ======================
+   SIGNATURE
+====================== */
+
+.signature-section{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.notes{
+    font-size:11px;
+    color:#666;
+    line-height:1.8;
+}
+
+.signature-box{
+    width:220px;
+    text-align:center;
+}
+
+.signature-space{
+    height:80px;
+}
+
+.signature-line{
+    border-top:1px solid #333;
+    padding-top:5px;
+}
+
+/* ======================
+   PRINT
+====================== */
+
+@media print{
+
+    .no-print{
+        display:none !important;
+    }
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- TOMBOL CETAK (hilang saat print) -->
-    <div class="no-print" style="text-align:right; margin-bottom:12px;">
-        <button onclick="window.print()"
-                style="background:#2a9e6e; color:#fff; border:none; padding:8px 20px;
-                       border-radius:8px; font-size:13px; cursor:pointer;">
-            🖨️ Cetak Laporan
-        </button>
-        <button onclick="window.history.back()"
-                style="background:#e97fa8; color:#fff; border:none; padding:8px 20px;
-                       border-radius:8px; font-size:13px; cursor:pointer; margin-left:8px;">
-            ← Kembali
-        </button>
+<?php
+$total_order = count($laporan);
+$rata_rata = $total_order > 0 ? $grand_total / $total_order : 0;
+?>
+
+<!-- BUTTON -->
+<div class="action-bar no-print">
+
+    <button
+        class="btn btn-print"
+        onclick="window.print()">
+        🖨️ Cetak Laporan
+    </button>
+
+    <button
+        class="btn btn-back"
+        onclick="window.history.back()">
+        ← Kembali
+    </button>
+
+</div>
+
+<!-- HEADER -->
+<div class="report-header">
+
+    <div class="company-name">
+        PT MAJU JAYA
     </div>
 
-    <!-- HEADER -->
-    <div class="header">
-        <h2>PT MAJU JAYA</h2>
-        <p>Sales Order Management System</p>
-        <hr class="divider">
-        <h3 style="margin:6px 0; font-size:14px;">LAPORAN PENJUALAN</h3>
-        <p>Periode: <?= date('d M Y', strtotime($dari)) ?> s/d <?= date('d M Y', strtotime($sampai)) ?></p>
-        <hr class="divider2">
+    <div class="company-desc">
+        Sales Order Management System
     </div>
 
-    <!-- INFO -->
-    <div class="info-row">
-        <span>Dicetak oleh: <strong><?= $this->session->userdata('nama') ?></strong>
-            (<?= ucfirst($this->session->userdata('role')) ?>)
-        </span>
-        <span>Tanggal cetak: <strong><?= date('d M Y, H:i') ?> WIB</strong></span>
+    <hr class="divider">
+
+    <div class="report-title">
+        LAPORAN PENJUALAN
     </div>
 
-    <!-- STAT BOXES -->
-    <?php
-        $total_order = count($laporan);
-        $rata_rata   = $total_order > 0 ? $grand_total / $total_order : 0;
-    ?>
-    <div class="stat-row">
-        <div class="stat-box">
-            <div class="label">Total Order</div>
-            <div class="value"><?= $total_order ?> order</div>
+    <div class="period">
+        Periode :
+        <?= date('d M Y', strtotime($dari)) ?>
+        s/d
+        <?= date('d M Y', strtotime($sampai)) ?>
+    </div>
+
+</div>
+
+<!-- INFO -->
+<div class="info-row">
+
+    <div>
+        Dicetak oleh :
+        <strong>
+            <?= $this->session->userdata('nama') ?>
+        </strong>
+        (<?= ucfirst($this->session->userdata('role')) ?>)
+    </div>
+
+    <div>
+        <?= date('d M Y H:i') ?> WIB
+    </div>
+
+</div>
+
+<!-- SUMMARY -->
+<div class="stat-row">
+
+    <div class="stat-box">
+        <div class="stat-label">Total Order</div>
+        <div class="stat-value">
+            <?= $total_order ?>
         </div>
-        <div class="stat-box">
-            <div class="label">Grand Total</div>
-            <div class="value">Rp <?= number_format($grand_total, 0, ',', '.') ?></div>
-        </div>
-        <div class="stat-box">
-            <div class="label">Rata-rata / Order</div>
-            <div class="value">Rp <?= number_format($rata_rata, 0, ',', '.') ?></div>
+    </div>
+
+    <div class="stat-box">
+        <div class="stat-label">Grand Total</div>
+        <div class="stat-value">
+            Rp <?= number_format($grand_total,0,',','.') ?>
         </div>
     </div>
 
-    <!-- TABLE -->
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>No. Order</th>
-                <th>Tanggal</th>
-                <th>Sales</th>
-                <th>Pelanggan</th>
-                <th>Total Harga</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php $no = 1; foreach ($laporan as $l): ?>
+    <div class="stat-box">
+        <div class="stat-label">Rata-rata Order</div>
+        <div class="stat-value">
+            Rp <?= number_format($rata_rata,0,',','.') ?>
+        </div>
+    </div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+
+<table>
+
+    <thead>
         <tr>
-            <td><?= $no++ ?></td>
-            <td><strong><?= $l->no_order ?></strong></td>
-            <td><?= date('d/m/Y', strtotime($l->tanggal)) ?></td>
-            <td><?= $l->nama_sales ?></td>
-            <td><?= $l->nama_pelanggan ?></td>
-            <td><strong>Rp <?= number_format($l->total_harga, 0, ',', '.') ?></strong></td>
-            <td><?= ucfirst($l->status) ?></td>
+            <th>No</th>
+            <th>No Order</th>
+            <th>Tanggal</th>
+            <th>Sales</th>
+            <th>Pelanggan</th>
+            <th>Total Harga</th>
+            <th>Status</th>
         </tr>
-        <?php endforeach; ?>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="5" style="text-align:right;">GRAND TOTAL</td>
-                <td colspan="2">Rp <?= number_format($grand_total, 0, ',', '.') ?></td>
-            </tr>
-        </tfoot>
-    </table>
+    </thead>
 
-    <!-- TTD -->
-    <div class="ttd-section">
-        <div class="catatan">
-            * Laporan ini digenerate otomatis oleh sistem.<br>
-            * Data tidak termasuk order yang dibatalkan.
-        </div>
-        <div class="ttd-box">
-            Tangerang, <?= date('d M Y') ?>
-            <div class="ttd-line">Manager</div>
-        </div>
+    <tbody>
+
+    <?php $no=1; foreach($laporan as $l): ?>
+
+        <tr>
+
+            <td><?= $no++ ?></td>
+
+            <td>
+                <strong><?= $l->no_order ?></strong>
+            </td>
+
+            <td>
+                <?= date('d/m/Y', strtotime($l->tanggal)) ?>
+            </td>
+
+            <td>
+                <?= $l->nama_sales ?>
+            </td>
+
+            <td>
+                <?= $l->nama_pelanggan ?>
+            </td>
+
+            <td>
+                <strong>
+                    Rp <?= number_format($l->total_harga,0,',','.') ?>
+                </strong>
+            </td>
+
+            <td>
+
+                <span class="status status-<?= $l->status ?>">
+                    <?= ucfirst($l->status) ?>
+                </span>
+
+            </td>
+
+        </tr>
+
+    <?php endforeach; ?>
+
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="5" class="text-right">
+                GRAND TOTAL
+            </td>
+            <td colspan="2">
+                Rp <?= number_format($grand_total,0,',','.') ?>
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
+
+</div>
+
+<!-- TOTAL BOX -->
+<div class="total-box">
+    <h3>
+        Total Penjualan :
+        Rp <?= number_format($grand_total,0,',','.') ?>
+    </h3>
+</div>
+
+<!-- SIGNATURE -->
+<div class="signature-section">
+
+    <div class="notes">
+        <strong>Catatan:</strong><br>
+        • Laporan ini dihasilkan otomatis oleh sistem.<br>
+        • Data tidak termasuk transaksi yang dibatalkan.<br>
+        • Dokumen ini digunakan sebagai arsip laporan perusahaan.
     </div>
 
-    <script>
-        window.print();
-    </script>
+    <div class="signature-box">
+
+        Tangerang,
+        <?= date('d M Y') ?>
+
+        <div class="signature-space"></div>
+
+        <div class="signature-line">
+            Manager
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+window.print();
+</script>
 
 </body>
 </html>
+```

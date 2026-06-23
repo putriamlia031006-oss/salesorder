@@ -5,78 +5,198 @@
 <div class="container-fluid">
 
 <style>
-    :root {
-        --green:      #3dbb85;
-        --green-dark: #2a9e6e;
-        --green-light:#e8f8f2;
-        --pink:       #e97fa8;
-        --pink-dark:  #d4608e;
-        --pink-light: #fce8f1;
-    }
-    body { background-color: #f7faf9 !important; }
+:root{
+    --cream:#F8F3ED;
+    --cream-dark:#E8DCCB;
+    --cream-light:#FFFDF9;
 
-    .page-hero {
-        background: linear-gradient(135deg, var(--green), var(--green-dark));
-        border-radius: 16px;
-        padding: 22px 28px;
-        color: #fff;
-        margin-bottom: 24px;
-        position: relative;
-        overflow: hidden;
-    }
-    .page-hero::before {
-        content:""; position:absolute;
-        width:160px; height:160px;
-        background:rgba(255,255,255,.08);
-        border-radius:50%; right:-40px; top:-60px;
-    }
-    .page-hero-content { position:relative; z-index:2; }
+    --brown:#B08968;
+    --brown-dark:#8B6B4A;
+    --brown-light:#EADCCB;
 
-    .card-modern {
-        border: none;
-        border-radius: 16px;
-        box-shadow: 0 4px 14px rgba(0,0,0,.06);
-    }
-    .form-control {
-        border-radius: 10px;
-        border: 1.5px solid #e2e8f0;
-        padding: 10px 14px;
-        font-size: 14px;
-        transition: .2s;
-    }
-    .form-control:focus {
-        border-color: var(--green);
-        box-shadow: 0 0 0 3px rgba(61,187,133,.15);
-    }
-    .input-group-text {
-        border-radius: 10px 0 0 10px;
-        border: 1.5px solid #e2e8f0;
-        background: var(--green-light);
-        color: var(--green-dark);
-        font-weight: 600;
-    }
-    .input-group .form-control {
-        border-radius: 0 10px 10px 0;
-    }
-    label {
-        font-weight: 600;
-        font-size: 13px;
-        color: #4a5568;
-        margin-bottom: 6px;
-    }
-    .btn-green {
-        background: var(--green); color: #fff;
-        border: none; border-radius: 10px;
-        padding: 10px 24px; font-weight: 600;
-    }
-    .btn-green:hover { background: var(--green-dark); color: #fff; }
-    .btn-outline-cancel {
-        background: #fff; color: #718096;
-        border: 1.5px solid #e2e8f0; border-radius: 10px;
-        padding: 10px 24px; font-weight: 600;
-    }
-    .btn-outline-cancel:hover { background: #f7fafc; color: #4a5568; }
+    --accent:#D9B99B;
+}
+
+body{
+    background-color:var(--cream) !important;
+}
+
+/* HERO */
+.page-hero{
+    background:linear-gradient(
+        135deg,
+        var(--accent),
+        var(--brown)
+    );
+    border-radius:18px;
+    padding:24px 30px;
+    color:white;
+    margin-bottom:25px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(176,137,104,.15);
+}
+
+.page-hero::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:rgba(255,255,255,.12);
+    border-radius:50%;
+    right:-50px;
+    top:-70px;
+}
+
+.page-hero-content{
+    position:relative;
+    z-index:2;
+}
+
+/* CARD */
+.card-modern{
+    border:none;
+    border-radius:18px;
+    background:white;
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+/* FORM */
+.form-control{
+    border-radius:12px;
+    border:1.5px solid #EADFCF;
+    padding:11px 15px;
+    font-size:14px;
+    transition:.25s;
+}
+
+.form-control:focus{
+    border-color:var(--brown);
+    box-shadow:0 0 0 4px rgba(176,137,104,.15);
+}
+
+.input-group-text{
+    border-radius:12px 0 0 12px;
+    border:1.5px solid #EADFCF;
+    background:var(--cream);
+    color:var(--brown-dark);
+    font-weight:600;
+}
+
+.input-group .form-control{
+    border-radius:0 12px 12px 0;
+}
+
+label{
+    font-weight:600;
+    font-size:13px;
+    color:var(--brown-dark);
+    margin-bottom:7px;
+}
+
+/* BUTTON */
+.btn-green{
+    background:linear-gradient(
+        135deg,
+        var(--brown),
+        var(--brown-dark)
+    );
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:11px 26px;
+    font-weight:600;
+}
+
+.btn-green:hover{
+    background:linear-gradient(
+        135deg,
+        var(--brown-dark),
+        #6F5138
+    );
+    color:white;
+}
+
+.btn-outline-cancel{
+    background:white;
+    color:var(--brown-dark);
+    border:1.5px solid #EADFCF;
+    border-radius:12px;
+    padding:11px 26px;
+    font-weight:600;
+}
+
+.btn-outline-cancel:hover{
+    background:var(--cream);
+}
+
+/* HEADER CARD */
+.card-header{
+    background:white !important;
+}
+
+/* ICON BOX */
+.icon-box{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--cream);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.icon-box i{
+    color:var(--brown);
+}
+
+/* TIPS CARD */
+.tip-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--brown-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.tip-icon i{
+    color:var(--brown-dark);
+}
+
+.list-unstyled li{
+    color:#5F5F5F;
+    margin-bottom:10px;
+}
+
+.list-unstyled li i{
+    color:var(--brown);
+}
+
+/* LINK KEMBALI */
+.btn-back{
+    background:rgba(255,255,255,.2);
+    border-radius:12px;
+    padding:8px 16px;
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+}
+
+.btn-back:hover{
+    background:rgba(255,255,255,.3);
+    color:white;
+    text-decoration:none;
+}
+
+/* HR */
+hr{
+    border-color:#F0E7DE;
+}
 </style>
+
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -99,15 +219,15 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-12">
         <div class="card card-modern">
 
             <!-- Card Header -->
-            <div class="card-header bg-white border-0 pt-4 pb-0 px-4">
+            <div class="card-header bg-white border-0 pt-2 pb-0 px-2">
                 <div class="d-flex align-items-center">
-                    <div style="width:40px;height:40px;border-radius:12px;background:var(--green-light);
+                    <div style="width:40px;height:40px;border-radius:12px;background:var(--cream);
                                 display:flex;align-items:center;justify-content:center;margin-right:12px;">
-                        <i class="fas fa-box" style="color:var(--green);"></i>
+                        <i class="fas fa-box" style="color:var(--brown);"></i>
                     </div>
                     <div>
                         <h6 class="font-weight-bold mb-0">Informasi Produk</h6>
@@ -121,19 +241,19 @@
                       method="POST">
 
                     <div class="form-group">
-                        <label><i class="fas fa-barcode mr-1" style="color:var(--green);"></i> Kode Produk</label>
+                        <label><i class="fas fa-barcode mr-1" style="color:var(--brown);"></i> Kode Produk</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">#</span>
                             </div>
                             <input type="text" name="kode_produk" class="form-control"
-                                   placeholder="Contoh: PRD-001"
+                                   placeholder="Contoh: P-001"
                                    value="<?= $produk->kode_produk ?? '' ?>" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fas fa-tag mr-1" style="color:var(--green);"></i> Nama Produk</label>
+                        <label><i class="fas fa-tag mr-1" style="color:var(--brown);"></i> Nama Produk</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-box"></i></span>
@@ -145,7 +265,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fas fa-money-bill mr-1" style="color:var(--green);"></i> Harga</label>
+                        <label><i class="fas fa-money-bill mr-1" style="color:var(--brown);"></i> Harga</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp</span>
@@ -157,7 +277,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fas fa-cubes mr-1" style="color:var(--green);"></i> Stok</label>
+                        <label><i class="fas fa-cubes mr-1" style="color:var(--brown);"></i> Stok</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-cubes"></i></span>
@@ -182,39 +302,6 @@
                     </div>
 
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tips Card -->
-    <div class="col-lg-6">
-        <div class="card card-modern">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center mb-3">
-                    <div style="width:40px;height:40px;border-radius:12px;background:var(--pink-light);
-                                display:flex;align-items:center;justify-content:center;margin-right:12px;">
-                        <i class="fas fa-lightbulb" style="color:var(--pink);"></i>
-                    </div>
-                    <h6 class="font-weight-bold mb-0">Tips Pengisian</h6>
-                </div>
-                <ul class="list-unstyled mb-0" style="font-size:13px; color:#4a5568;">
-                    <li class="mb-2">
-                        <i class="fas fa-check-circle mr-2" style="color:var(--green);"></i>
-                        Kode produk harus unik, contoh: <strong>PRD-001</strong>
-                    </li>
-                    <li class="mb-2">
-                        <i class="fas fa-check-circle mr-2" style="color:var(--green);"></i>
-                        Harga diisi tanpa titik atau koma
-                    </li>
-                    <li class="mb-2">
-                        <i class="fas fa-check-circle mr-2" style="color:var(--green);"></i>
-                        Stok kurang dari 5 akan ditandai <span style="color:var(--pink-dark);font-weight:600;">menipis</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle mr-2" style="color:var(--green);"></i>
-                        Stok akan otomatis berkurang saat order dibuat
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

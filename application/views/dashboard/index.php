@@ -221,7 +221,7 @@
 <div class="hero-card">
     <div class="hero-content">
         <p class="mb-1" style="opacity:.8; font-size:13px;">
-            <i class="fas fa-circle mr-1" style="color:#a8f0d4; font-size:9px;"></i>
+            <i class="fas fa-circle mr-1" style="color: var(--gold); font-size:9px;"></i>
             <?= date('l, d F Y') ?>
         </p>
         <h4 class="font-weight-bold mb-1">

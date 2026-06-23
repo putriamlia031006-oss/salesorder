@@ -1,9 +1,9 @@
-<ul class="navbar-nav sidebar sidebar-light accordion brown-sidebar" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-light accordion cream-sidebar" id="accordionSidebar">
 
     <!-- Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= site_url('dashboard') ?>">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-mobile-alt"></i>
         </div>
         <div class="sidebar-brand-text mx-3">
             PT Maju Jaya
