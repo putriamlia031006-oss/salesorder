@@ -405,25 +405,6 @@ label{
 
             </form>
 
-            <!-- ROLE INFO -->
-            <div class="role-info">
-                <div style="font-weight:600; color:var(--gold); margin-bottom:6px; font-size:11px;">
-                    <i class="fas fa-info-circle mr-1" style="color:var(--gold);"></i> Hak Akses Role:
-                </div>
-                <div class="role-item">
-                    <span>Admin</span>
-                    <span class="role-badge">Semua fitur</span>
-                </div>
-                <div class="role-item">
-                    <span>Sales</span>
-                    <span class="role-badge gold">Sales Order</span>
-                </div>
-                <div class="role-item">
-                    <span>Manager</span>
-                    <span class="role-badge brown">Laporan</span>
-                </div>
-            </div>
-
         </div>
     </div>
 
